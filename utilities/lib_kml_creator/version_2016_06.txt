@@ -1,0 +1,98 @@
+version 2016_06:
+base sur la version 2013_11
+
+reorganisation des fonctions:
+kml_creator.m            => kml_init.m
+add_position.m           => kml_addpos.m
+add_satellite.m          => kml_addsat.m
+satellite_position_llh.m => kml_satellite_llh.m
+create_and_view.m        => kml_create.m
+create_file.m            => kml_create.m, xml_write.m
+simple_kml.m             => simple_kml.m, export2kml.m
+
+modifications pour la compatibilite avec Octave :
+> kml_addsat.m
+test de validite des ephemerides
+
+> kml_satellite_llh.m
+modification du test des ephemerides (suppression des "try")
+
+> kml_create.m
+modification du calcul des timestamps
+suppression de l'affichage de l'echelle de couleur des ranges (texte)
+
+> xml_write.m
+modification pour la compatibilite avec Octave
+
+
+
+
+Historique:
+
+%-----------------------------------
+version 2013_11:
+base sur la version 2012_12
+
+Ajout de la fonction "simple_kml"
+(creation directe d'un fichier kml)
+
+Mise a jour des commentaires
+
+Le fichier "help_function_syntax" remplace les scripts :
+ "exemple_simple" et "exemple_complet"
+
+les fonctions "gps_ephemeris" et "gps_almanach" sont integrees a la fonction "satellite_llh"
+
+%-----------------------------------
+version 2012_12:
+Modifications majeures
+base sur la version 2012_10
+
+Modification avec impact sur les entrees :
+
+-suppression de l'objet "kml_creator", remplace par les fonctions :
+kml_creator
+add_position
+add_satellite
+create_and_view
+(compatible avec Matlab 2006, mais modification des appels de fonction)
+
+-renomage de la fonction "create_file" (anciennement "create_kml")
+
+-modification des champs de la structure de sauvegarde
+en particulier: "obj.color_scale" renome en "obj.link_color"
+
+-modification de la gestion de couleur des liens satellite (link_color):
+de 1 a 3 seuils (pour les couleurs vert->jaune->orange->rouge)
+NaN = noir
+[] = blanc
+
+Ameliorations sans impact sur les entrees :
+-modification de la fonction "create_file":
+creation de la sous-fonction "write_file" pour la gestion de l'ecriture dans le fichier
+ajout de l'entree "commande" dans la sous-fonction "xml_buffer"
+pas d'augmentation de la taille du buffer, ecriture automatique du fichier a la place
+creation de la sous-fonction "data_manager" pour la gestion et la conversion des donnes d'entree
+modification de la gestion de la waitbar: affichage par pas de 0.5%, creation de la structure "wb" pour les donnees de la waitbar
+creation de la sous-fonction "xml_main_Document"
+modification du nom des styles des liens satellite en fonction de la couleur
+-modification des champs de la structure de sauvegarde
+en particulier:
+"t", "llh", "range", "ephemeris" regroupe dans obj.data
+"range.value" renome en "range.link"
+-utilisation de vecteurs colone pour les coordonnees
+-correction de la fonction "create_and_view": correction de l'appel du fichier sous unix
+-en cas d'absence de donnees, creation d'un fichier kml vide (remplace la generation d'erreur)
+
+modification mineures
+modification des commentaires
+
+%-----------------------------------
+version 2012_10:
+base sur la version 2012_05
+
+-suppression des tabulations (plus rapide et plus simple)
+-modification de l'echelle de couleur des liens satellite: l'echelle correspond aux seuils
+-modification des commentaires
+-mise a jour de la valeur de la correction de latitude (mise a jour des images GoogleEarth)
+

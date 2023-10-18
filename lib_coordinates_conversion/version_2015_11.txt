@@ -1,0 +1,27 @@
+lib_coordinates_conversion
+
+Ver 2015_11
+correction of input size verification
+comments
+
+
+History:
+Ver 2014_05
+compute jacobian matrix of the conversions.
+verifications
+
+Ver_2013_06
+column and row vector accepted as input.
+new function "convert_llh"
+compute conversion (jacobian) matrix for:
+	convert_ecef2llh
+	convert_llh2ecef
+
+Ver 2013_01
+add function "local_radius"
+change librairy name
+
+Ver 2012_10
+function name changes, update
+
+Ver_2012_06
