@@ -78,9 +78,19 @@ dt = t - t_prev;
 % Kalman Filter State model
 %--------------------------------------------------------------------------
 % State propagation matrix
-F               = 0;
-F(i_pos, i_vel) = 0;
-F(i_cb, i_cd)   = 0;
+
+% Construct the state evolution matrix F
+F = [1 0 0 dt 0 0 0 0;
+     0 1 0 0 dt 0 0 0;
+     0 0 1 0 0 dt 0 0;
+     0 0 0 1 0 0 0 0;
+     0 0 0 0 1 0 0 0;
+     0 0 0 0 0 1 0 0;
+     0 0 0 0 0 0 1 dt;
+     0 0 0 0 0 0 0 1];
+
+%F(i_pos, i_vel) = 0;
+%F(i_cb, i_cd)   = 0;
 
 % *************************************************************************
 

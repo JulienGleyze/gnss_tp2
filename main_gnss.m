@@ -19,9 +19,9 @@ addpath navigator
 % *************************************************************************
 % FLAGS
 % *************************************************************************
-Flag_spp    = 1;    % Flag to enable/disable single point positioning (spp)
+Flag_spp    = 0;    % Flag to enable/disable single point positioning (spp)
 Flag_propag = 1;    % Flag to enable/disable ionospheric and tropospheric corrections
-Flag_nsv    = 1;    % Flag to enable/disable number of visible satellites configuration
+Flag_nsv    = 0;    % Flag to enable/disable number of visible satellites configuration
 Flag_kml    = 1;    % Flag to enable/disable KML display
 
 % *************************************************************************
@@ -73,7 +73,7 @@ if Flag_nsv == 1
     SVID    = cell(NSamp,1);
     NSV     = zeros(NSamp,1);
     for k = 1:NSamp
-        SVID{k,1} = [4 8 11 20 22]; % set SVID vector 
+        SVID{k,1} = [8 10 11 18 20]; % set SVID vector 
 
         NSV(k)    = length(SVID{k,1});
     end

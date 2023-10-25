@@ -3,10 +3,10 @@
 %                        General Configuration                            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Name of the kml file (GoogleEarth trajectory)
-config.kml_file = 'navsol_trajectory';
+config.kml_file = 'navsol_trajectory_ekf';
 
 % Color of the GoogleEarth trajectory
-config.kml_color = 'b';
+config.kml_color = 'g';
 
 % Flag for satellite display on GoogleEarth
 config.kml_plot_satellites = 0;
@@ -18,7 +18,7 @@ config.kml_plot_satellites = 0;
 config.kml_use_TOW  = 1;
 
 % Enable/disable EKF
-config.enable_EKF   = 0; 
+config.enable_EKF   = 1; 
 
 config.Flag_propag = Flag_propag;
 
